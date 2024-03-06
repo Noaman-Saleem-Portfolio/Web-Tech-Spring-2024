@@ -9,6 +9,8 @@ const student = ["Noaman", 22, 3.45, "lahore"];
 //   console.log(student[i]);
 // }
 
+//Home task write the above same loop using while loop
+
 // for (let std of student) {
 //   console.log(std);
 // }

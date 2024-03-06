@@ -1,4 +1,5 @@
 //Passing functions to other functions as parameters
+//called Higher Order Functions
 
 // function laught() {
 //   console.log("Ha ha ha");
@@ -24,6 +25,7 @@
 // ====================================================================================================================
 
 // A function that returns another function
+//called Higher Order Functions
 
 // function createMultiplier(x) {
 //   return function (y) {
@@ -35,7 +37,7 @@
 // let double = createMultiplier(2);
 
 // // Use the returned function to perform a calculation
-// console.log(double(6)); // Output: 10
+// console.log(double(6)); // Output: 12
 
 // ====================================================================================================================
 

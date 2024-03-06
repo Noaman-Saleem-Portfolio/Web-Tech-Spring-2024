@@ -116,7 +116,7 @@
 //   return promise;
 // };
 
-// const prepareFrenchToast = (callback) => {
+// const prepareFrenchToast = () => {
 //   let promise = new Promise((resolve, reject) => {
 //     setTimeout(() => {
 //       resolve("French Toast is ready.");
@@ -126,7 +126,7 @@
 //   return promise;
 // };
 
-// const prepareCoffee = (callback) => {
+// const prepareCoffee = () => {
 //   let promise = new Promise((resolve, reject) => {
 //     setTimeout(() => {
 //       resolve("Coffee is ready.");
@@ -136,10 +136,11 @@
 //   return promise;
 // };
 
-// let promise = preparePizza();
-// console.log(promise);
+// let promiseTask = preparePizza();
+// console.log(promiseTask);
+// console.log("Hello");
 
-// promise.then((value) => {
+// promiseTask.then((value) => {
 //   console.log(value);
 // });
 
@@ -173,7 +174,7 @@
 //   return promise;
 // };
 
-// const prepareFrenchToast = (callback) => {
+// const prepareFrenchToast = () => {
 //   let promise = new Promise((resolve, reject) => {
 //     setTimeout(() => {
 //       resolve("French Toast is ready.");
@@ -183,7 +184,7 @@
 //   return promise;
 // };
 
-// const prepareCoffee = (callback) => {
+// const prepareCoffee = () => {
 //   let promise = new Promise((resolve, reject) => {
 //     setTimeout(() => {
 //       resolve("Coffee is ready.");
@@ -230,7 +231,7 @@
 //   return promise;
 // };
 
-// const prepareFrenchToast = (callback) => {
+// const prepareFrenchToast = () => {
 //   let promise = new Promise((resolve, reject) => {
 //     setTimeout(() => {
 //       resolve("French Toast is ready.");
@@ -240,7 +241,7 @@
 //   return promise;
 // };
 
-// const prepareCoffee = (callback) => {
+// const prepareCoffee = () => {
 //   let promise = new Promise((resolve, reject) => {
 //     setTimeout(() => {
 //       resolve("Coffee is ready.");
@@ -399,7 +400,7 @@
 ///////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////
 
-// const cryptoAPI = async () => {
+// const githubAPI = async () => {
 //   const res = await fetch(
 //     "https://api.github.com/users/Noaman-Saleem-Portfolio"
 //   );
@@ -409,7 +410,7 @@
 //   console.log(data);
 // };
 
-// cryptoAPI();
+// githubAPI();
 
 // fetch("https://api.github.com/users/Noaman-Saleem-Portfolio")
 //   .then((response) => {
@@ -422,4 +423,20 @@
 
 // console.log("Program Completed");
 
+//////////////////////////////////////////////////
+// Quiz
+//////////////////////////////////////////////////
+//Home assignment
+//Fetch data from below mentioned API
+//1- Using .then().catch()
+//2- Using async await ---> try{}catch(err){}
 // https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd
+
+////////////And Also //////////////////////////
+// const student = ["Noaman", 22, 3.45, "lahore"];
+
+// for (let i = 0; i < student.length; i++) {
+//   console.log(student[i]);
+// }
+
+//Home task write the above same loop using while loop

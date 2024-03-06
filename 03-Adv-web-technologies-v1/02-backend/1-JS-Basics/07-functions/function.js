@@ -3,6 +3,7 @@
 // function addTwoNumbers(number1, number2) {
 //   console.log(number1 + number2);
 // }
+// addTwoNumbers();
 
 // function addTwoNumbers(number1, number2) {
 //   // let result = number1 + number2;
@@ -15,6 +16,14 @@
 // console.log("Result: ", result);
 
 // ============================================================================================================================
+
+//Truthy and Falsy
+// let var1 = "0";
+// if (var1) {
+//   console.log("I am Truthy");
+// } else {
+//   console.log("I am falsy");
+// }
 
 //Default Value as well
 // function loginUserMessage(username) {
@@ -30,7 +39,13 @@
 // }
 
 // console.log(loginUserMessage("Noaman"));
-// console.log(loginUserMessage("Ali"));
+// console.log(loginUserMessage(""));
+// console.log(loginUserMessage(123));
+
+// function loginUserMessage(username = "Anonymous User") {
+//   return `${username} just logged in`;
+// }
+// console.log(loginUserMessage());
 
 // ============================================================================================================================
 
@@ -44,7 +59,7 @@
 //   console.log(num1);
 // }
 
-// console.log(calculateCartPrice(200, 400, 500, 2000));
+// calculateCartPrice(200, 400, 500, 2000);
 
 // ============================================================================================================================
 
