@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Forms</title>
+    <style>
+      .form-control {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Student Info</h1>
+
+    <form action="" method="get">
+      <div class="form-control">
+        <label for="fname">First Name</label>
+        <input
+          type="text"
+          placeholder="First Name"
+          id="fname"
+          name="first-name"
+        />
+      </div>
+
+      <div class="form-control">
+        <label for="lname">Last Name</label>
+        <input
+          type="text"
+          placeholder="Last Name"
+          id="lname"
+          name="last-name"
+        />
+      </div>
+
+      <div class="form-control">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" />
+      </div>
+
+      <div class="form-control">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" />
+      </div>
+
+      <div class="form-control">
+        <p>Hobbies</p>
+        <label for="music">Music</label>
+        <input type="radio" id="music" name="hobby" value="music" />
+        <label for="">Traveling</label>
+        <input type="radio" name="hobby" value="traveling" />
+        <label for="">Books</label>
+        <input type="radio" name="hobby" value="books" />
+      </div>
+
+      <div class="form-control">
+        <p>UMT Societies</p>
+        <label for="programming">Programming</label>
+        <input type="checkbox" name="programming" />
+        <br />
+        <label for="debating">Debating</label>
+        <input type="checkbox" name="debating" value="true" />
+      </div>
+
+      <div class="form-control">
+        <p>Favourite Color</p>
+        <input type="color" name="color" id="" />
+      </div>
+
+      <div class="form-control">
+        <p>Date of Birth</p>
+        <input type="date" name="dob" id="" />
+      </div>
+
+      <div class="form-control">
+        <label for="city">City</label>
+        <select name="city" id="city">
+          <option value="chiniot">Chiniot</option>
+          <option value="lahore">Lahore</option>
+        </select>
+      </div>
+
+      <button>Submit</button>
+    </form>
+
+    <h1>Hijact Google</h1>
+    <form action="https://www.google.com/search" method="get">
+      <input type="text" placeholder="Searvh anything here" name="q" />
+      <button>Search</button>
+    </form>
+
+    <h1>Hijact Youtube</h1>
+    <form action="https://www.youtube.com/results" method="get">
+      <input
+        type="text"
+        placeholder="Searvh any video here"
+        name="search_query"
+      />
+      <button>Search</button>
+    </form>
+  </body>
+</html>
