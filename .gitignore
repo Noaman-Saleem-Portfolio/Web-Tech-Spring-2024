@@ -1,7 +1,6 @@
 01-slides
 
-/node_modules
+node_modules
 
-/dist
 
 .env
