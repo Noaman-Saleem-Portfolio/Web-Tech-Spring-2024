@@ -1,0 +1,74 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-color: rgb(41, 40, 40);
+}
+
+.cars {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card {
+  background-color: #fff;
+  flex-basis: 350px;
+  margin: 10px;
+  border-radius: 15px;
+}
+
+.card:hover {
+  background-color: rgb(66, 66, 66);
+  color: white;
+  transform: scale(1.03);
+  transition: all 1.2s ease;
+}
+
+.image {
+  background-color: aquamarine;
+  height: 250px;
+  background-size: cover;
+  margin-bottom: 20px;
+  border-radius: 15px 15px 0 0;
+}
+
+.car1 {
+  background-image: url("https://images.unsplash.com/flagged/photo-1553505192-acca7d4509be?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Ym13fGVufDB8fDB8fHww");
+}
+
+.car2 {
+  background-image: url("https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Ym13fGVufDB8fDB8fHww");
+}
+
+.car3 {
+  background-image: url("https://images.unsplash.com/photo-1617531653332-bd46c24f2068?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGJtd3xlbnwwfHwwfHx8MA%3D%3D");
+}
+
+h2 {
+  padding: 10px;
+}
+
+p {
+  padding: 10px;
+}
+
+a {
+  background-color: black;
+  color: #fff;
+  padding: 10px 15px;
+  display: block;
+  width: 140px;
+  text-decoration: none;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
