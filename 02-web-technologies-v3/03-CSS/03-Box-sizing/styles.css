@@ -1,0 +1,16 @@
+.para1 {
+  background-color: yellow;
+  border: 10px dotted black;
+  box-sizing: border-box;
+  /* padding: 15px; */
+}
+
+.para2 {
+  background-color: pink;
+  border: 10px dotted black;
+  /* padding: 15px; */
+}
+
+p {
+  width: 50%;
+}
