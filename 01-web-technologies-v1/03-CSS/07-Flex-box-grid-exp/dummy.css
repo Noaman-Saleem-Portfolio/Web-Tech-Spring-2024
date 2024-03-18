@@ -28,13 +28,13 @@ body {
   border-radius: 15px;
   /* margin: 10px; */
   /* padding: 20px; */
+  transition: all 1.2s ease;
 }
 
 .card:hover {
   background-color: rgb(66, 66, 66);
   color: #fff;
   transform: scale(1.03);
-  transition: all 1.2s ease;
 }
 
 .card .card-image {
