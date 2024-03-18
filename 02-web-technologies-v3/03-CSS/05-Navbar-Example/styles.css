@@ -1,0 +1,49 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.container {
+  width: 85%;
+  /* background-color: pink; */
+  /* margin-right: auto;
+  margin-left: auto; */
+  margin: 0 auto;
+}
+
+nav {
+  background-color: rgb(62, 62, 212);
+  color: #fff;
+  position: fixed;
+  /* position: absolute; */
+  width: 100%;
+  /* right: 50px;
+  left: 50px; */
+}
+
+.logo,
+.links {
+  display: inline-block;
+}
+
+.links {
+  padding: 15px;
+  /* margin: 15px; */
+  margin-left: 75px;
+}
+
+.links a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 30px;
+}
+
+.main {
+  padding: 70px;
+}
