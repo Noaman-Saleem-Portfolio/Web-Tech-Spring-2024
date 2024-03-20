@@ -17,6 +17,8 @@ const Menubar = () => {
           <Link to={"/contact"}>Contact</Link>
           <Link to={"/counter"}>Counter</Link>
           <Link to={"/student"}>Student</Link>
+          <Link to={"/user-data"}>userData</Link>
+          <Link to={"/meme"}>Meme Generatoe</Link>
         </div>
 
         {/* Right Nav */}

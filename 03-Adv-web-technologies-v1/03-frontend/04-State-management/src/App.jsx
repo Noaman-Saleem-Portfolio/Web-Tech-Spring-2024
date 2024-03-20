@@ -6,6 +6,8 @@ import Contact from "./pages/Contact";
 import Menubar from "./components/Menubar";
 import Counter from "./pages/Counter";
 import Student from "./pages/Student";
+import Meme from "./pages/Meme";
+import UserData from "./pages/UserData";
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/counter" element={<Counter />} />
         <Route path="/student" element={<Student />} />
+        <Route path="/user-data" element={<UserData />} />
+        <Route path="/meme" element={<Meme />} />
       </Routes>
     </BrowserRouter>
   );
