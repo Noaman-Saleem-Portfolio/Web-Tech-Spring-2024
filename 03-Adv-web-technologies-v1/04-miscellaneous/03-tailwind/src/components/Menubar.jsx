@@ -15,6 +15,7 @@ const Menubar = () => {
           <Link to="/news">News</Link>
           <Link to="/contact">Contact</Link>
           <Link to="/user-data">UserData</Link>
+          <Link to="/meme">Meme</Link>
           {/* <a href="/">Home</a>
           <a href="/news">News</a>
           <a href="/contact">Contact</a> */}
@@ -22,8 +23,8 @@ const Menubar = () => {
 
         {/* right */}
         <div className="space-x-5">
-        <Link to="#">Login</Link>
-        <Link to="#">Signup</Link>
+          <Link to="#">Login</Link>
+          <Link to="#">Signup</Link>
           {/* <a href="#">Login</a>
           <a href="#">Signup</a> */}
         </div>
