@@ -11,7 +11,7 @@ import UserData from "./pages/UserData";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter> 
       <Menubar />
       <Routes>
         <Route path="/" element={<Home />} />
