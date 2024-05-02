@@ -1,5 +1,5 @@
 {
-  "name": "web-server",
+  "name": "01-creatingwebserver",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,9 +8,12 @@
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
-  "author": "Nomi",
+  "author": "nomi",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.19.1"
+    "express": "^4.19.2",
+    "mongoose": "^8.3.3",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.0"
   }
 }
