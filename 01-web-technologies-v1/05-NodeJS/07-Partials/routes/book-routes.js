@@ -3,6 +3,7 @@ import {
   createNewBook,
   createNewBookPage,
   deleteBook,
+  editBookPage,
   homePage,
   readAllBooks,
   readBook,
@@ -25,6 +26,9 @@ router.route("/books").get(readAllBooks);
 
 // read specific book
 router.route("/books/:id").get(readBook);
+
+// edit book page
+router.route("/books/:id/edit").get(editBookPage);
 
 // update book
 router.route("/books/:id").patch(updateBook);

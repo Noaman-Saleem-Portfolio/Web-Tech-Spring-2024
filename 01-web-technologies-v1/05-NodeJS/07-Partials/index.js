@@ -1,5 +1,6 @@
 import express from "express";
 import morgan from "morgan";
+import methodOverride from "method-override";
 import connectDB from "./database/database.js";
 
 const app = express();
@@ -11,6 +12,9 @@ app.set("views", "views");
 // setting folder for static assets
 app.use(express.static("public"));
 
+// override with POST having ?_method=DELETE
+app.use(methodOverride("_method"));
+
 // importing routes
 import bookRoutes from "./routes/book-routes.js";
 
@@ -19,6 +23,7 @@ connectDB();
 
 //Middlewares
 app.use(express.json());
+app.use(express.urlencoded());
 app.use(morgan("dev"));
 
 // using routes

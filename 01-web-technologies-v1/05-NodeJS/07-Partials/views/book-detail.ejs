@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./partials/head.ejs") %>
+  </head>
+  <body>
+    <%- include("./partials/navbar.ejs") %>
+
+    <div class="container">
+      <h1>Purchase your favourite Book</h1>
+
+      <h3><%= book.title %></h3>
+      <p>Price : Rs.<%= book.price %></p>
+      <h6>Description:</h6>
+      <p><%= book.description %></p>
+      <hr />
+    </div>
+
+    <%- include("./partials/scripts.ejs") %>
+  </body>
+</html>

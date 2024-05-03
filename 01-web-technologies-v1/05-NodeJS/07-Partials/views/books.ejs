@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./partials/head.ejs") %>
+  </head>
+  <body>
+    <%- include("./partials/navbar.ejs") %>
+
+    <div class="container">
+      <h1>Purchase your favourite Book</h1>
+
+      <% for(let book of books){ %>
+      <h3><%= book.title %></h3>
+      <p>Price : Rs.<%= book.price %></p>
+      <a class="btn btn-primary" href="/books/<%= book._id %>">More Details</a>
+      <a class="btn btn-success" href="/books/<%= book._id %>/edit">Edit</a>
+      <form
+        action="/books/<%= book._id %>?_method=delete"
+        method="post"
+        style="display: inline-block"
+      >
+        <button class="btn btn-danger">Delete</button>
+      </form>
+      <hr />
+      <% } %>
+    </div>
+
+    <%- include("./partials/scripts.ejs") %>
+  </body>
+</html>

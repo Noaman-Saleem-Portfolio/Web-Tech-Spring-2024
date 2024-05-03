@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Courses</title>
+  </head>
+  <body>
+    <h2>You are registered in the following courses</h2>
+
+    <ul>
+      <!-- <% for(let i=0;i<courses.length;i++){ %> -->
+      <!-- <li><%= courses[i] %></li> -->
+      <!-- <% } %> -->
+
+      <% for(let course of courses){ %>
+      <li><%= course %></li>
+      <% } %>
+    </ul>
+  </body>
+</html>
