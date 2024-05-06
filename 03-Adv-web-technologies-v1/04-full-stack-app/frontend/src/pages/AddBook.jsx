@@ -33,7 +33,7 @@ const AddBook = () => {
     formData.append("price", price);
     formData.append("description", description);
 
-    console.log(formData);
+    // console.log(formData);
 
     try {
       const response = await addBook(formData);

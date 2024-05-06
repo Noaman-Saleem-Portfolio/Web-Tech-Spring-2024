@@ -6,8 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js",
-    "proxy": "http://localhost:5173/"
+    "dev": "nodemon index.js"
   },
   "author": "nomi",
   "license": "ISC",
