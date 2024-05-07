@@ -88,6 +88,12 @@
 // };
 
 // preparePizza(() => {
+//   prepareFrenchToast(() => {
+//     prepareCoffee(() => {});
+//   });
+// });
+
+// preparePizza(() => {
 //   console.log("Pizza Callback");
 //   prepareFrenchToast(() => {
 //     console.log("French Toast Callback");
