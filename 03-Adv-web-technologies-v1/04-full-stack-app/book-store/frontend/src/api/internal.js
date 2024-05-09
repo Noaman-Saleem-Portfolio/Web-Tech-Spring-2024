@@ -21,15 +21,16 @@ export const addBook = async (data) => {
 
   return response;
 };
-// export const addBook = async (data) => {
-//   let response;
 
-//   try {
-//     response = await api.post("/books", data);
-//   } catch (error) {
-//     // console.log("Error ho gae");
-//     return error;
-//   }
+export const readBooks = async () => {
+  let response;
 
-//   return response;
-// };
+  try {
+    response = await api.get("/books");
+  } catch (error) {
+    console.log("Error ho gae");
+    return error;
+  }
+
+  return response;
+};
