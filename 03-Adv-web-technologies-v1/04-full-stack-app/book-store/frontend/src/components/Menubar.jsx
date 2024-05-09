@@ -13,6 +13,7 @@ const Menubar = () => {
         <div className="text-white  space-x-12">
           <Link to={"/"}>Home</Link>
           <Link to={"/add-book"}>Add Book</Link>
+          <Link to={"/books"}>Books</Link>
         </div>
 
         {/* Right Nav */}
