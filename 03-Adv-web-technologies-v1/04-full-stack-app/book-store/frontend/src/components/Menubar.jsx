@@ -14,6 +14,7 @@ const Menubar = () => {
           <Link to={"/"}>Home</Link>
           <Link to={"/add-book"}>Add Book</Link>
           <Link to={"/books"}>Books</Link>
+          {/* <Link to={"/book-update/:id"}>Update Book</Link> */}
         </div>
 
         {/* Right Nav */}

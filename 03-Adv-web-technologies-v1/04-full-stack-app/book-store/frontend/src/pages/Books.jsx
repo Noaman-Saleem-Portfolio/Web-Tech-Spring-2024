@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { readBooks } from "../api/internal";
+import { useNavigate } from "react-router-dom";
 
 const Books = () => {
   const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [books, setBooks] = useState([]);
+
+  const navigate = useNavigate()
+
+  // console.log(books.length);
 
   useEffect(() => {
     const readAllBooks = async () => {
@@ -29,9 +34,18 @@ const Books = () => {
     };
     readAllBooks();
   }, []);
+
+  // handleUpdate
+  const handleUpdate = (id)=> {
+    navigate(`/book-update/${id}`)
+  }
+  
   return (
     <div className="mx-auto w-[88%]">
       <h1 className="text-[32px] font-bold my-[20px]">Books Collection</h1>
+      {isError && (
+        <p className="text-red-700 mx-auto w-[50%] mt-[10px]">{errorMessage}</p>
+      )}
       {books.length === 0 ? (
         <p>No Books available to display at the moment.</p>
       ) : (
@@ -49,6 +63,9 @@ const Books = () => {
                 </div>
                 <h4 className="text-[20px] font-bold">{book.title}</h4>
                 <p className="">Rs : {book.price}</p>
+                <div className="my-[15px]">
+                  <button onClick={()=> handleUpdate(book._id)} className="bg-blue-950 text-[#fff] p-[5px] rounded-xl">Update</button>
+                </div>
                 <hr />
               </div>
             );

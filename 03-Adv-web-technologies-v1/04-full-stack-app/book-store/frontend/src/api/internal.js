@@ -34,3 +34,16 @@ export const readBooks = async () => {
 
   return response;
 };
+
+export const updateBook = async (data, id) => {
+  let response;
+
+  try {
+    response = await api.patch(`/books/${id}`, data);
+  } catch (error) {
+    // console.log("Error ho gae");
+    return error;
+  }
+
+  return response;
+};

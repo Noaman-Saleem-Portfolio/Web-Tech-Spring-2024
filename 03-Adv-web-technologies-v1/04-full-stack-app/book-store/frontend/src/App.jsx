@@ -7,6 +7,7 @@ import Menubar from "./components/Menubar";
 import AddBook from "./pages/AddBook";
 import Formik from "./pages/Formik";
 import Books from "./pages/Books";
+import UpdateBook from "./pages/UpdateBook";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/add-book" element={<AddBook />} />
         {/* <Route path="/add-book" element={<Formik />} /> */}
         <Route path="/books" element={<Books />} />
+        <Route path="/book-update/:id" element={<UpdateBook />} />
       </Routes>
     </BrowserRouter>
   );
