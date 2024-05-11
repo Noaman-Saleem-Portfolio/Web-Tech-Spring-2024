@@ -1,63 +1,101 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { addBook, updateBook } from "../api/internal";
+import { readSpecificBook, updateBook } from "../api/internal";
 
 const UpdateBook = () => {
-    const navigate = useNavigate();
-    const [isError, setIsError] = useState(false);
-    const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
 
-    // reading params
-    const params = useParams()
-    // console.log(params);
-    const bookId = params.id
+  const [book, setBook] = useState({});
+  const [isError, setIsError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
-    // data state object
-    const [data, setData] = useState({
-      title: "",
-      price: "",
-      description: "",
-      photo: "",
-    });
-    // change handler
-    const changeHandler = (e) => {
-      setData((pre) => {
-        return {
-          ...pre,
-          [e.target.name]:
-            e.target.type === "file" ? e.target.files[0] : e.target.value,
-        };
-      });
-    };
-    // submitHandler
-    const submitHandler = async () => {
-      const { title, price, description, photo } = data;
-      // console.log(title, price, description, photo);
-      const formData = new FormData();
-      formData.append("photo", photo);
-      formData.append("title", title);
-      formData.append("price", price);
-      formData.append("description", description);
-  
-      // console.log(formData);
-  
+  // data state object
+  const [data, setData] = useState({
+    title: book.title,
+    price: book.price,
+    description: book.description,
+    photo: "",
+  });
+
+  // reading params
+  const params = useParams();
+  // console.log(params);
+  const bookId = params.id;
+
+  // read specific book
+  useEffect(() => {
+    const readBook = async () => {
       try {
-        const response = await updateBook(formData);
-        console.log(response);
+        const response = await readSpecificBook(bookId);
+        // console.log(response);
         // console.log(response instanceof Error);
         if (response instanceof Error) {
+          // to handle server down error
+          if (response.code == "ERR_NETWORK") {
+            throw new Error(response.message);
+          }
           throw new Error(response.response.data.message);
         }
-        if (response.status === 200) {
-          navigate("/");
-        }
+        setBook(response.data.book);
       } catch (err) {
-        // console.log("haaaaaaaaaa");
-        // console.log(err);
+        console.log("OH NO ERROR");
+        console.log(err);
         setIsError(true);
         setErrorMessage(err.message);
       }
     };
+    readBook();
+  }, []);
+
+  useEffect(() => {
+    setData({
+      title: book.title,
+      price: book.price,
+      description: book.description,
+      photo: "",
+    });
+  }, [book]);
+
+  // change handler
+  const changeHandler = (e) => {
+    setData((pre) => {
+      return {
+        ...pre,
+        [e.target.name]:
+          e.target.type === "file" ? e.target.files[0] : e.target.value,
+      };
+    });
+  };
+  // submitHandler
+  const submitHandler = async () => {
+    const { title, price, description, photo } = data;
+    // console.log(title, price, description, photo);
+    const formData = new FormData();
+    formData.append("photo", photo);
+    formData.append("title", title);
+    formData.append("price", price);
+    formData.append("description", description);
+
+    // console.log(formData);
+
+    try {
+      const response = await updateBook(formData, bookId);
+    //   console.log(response);
+      // console.log(response instanceof Error);
+      if (response instanceof Error) {
+        throw new Error(response.response.data.message);
+      }
+      if (response.status === 200) {
+        navigate("/");
+      }
+    } catch (err) {
+      // console.log("haaaaaaaaaa");
+      // console.log(err);
+      setIsError(true);
+      setErrorMessage(err.message);
+    }
+  };
+
   return (
     <>
       {isError && (
@@ -102,7 +140,7 @@ const UpdateBook = () => {
         </button>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default UpdateBook
+export default UpdateBook;

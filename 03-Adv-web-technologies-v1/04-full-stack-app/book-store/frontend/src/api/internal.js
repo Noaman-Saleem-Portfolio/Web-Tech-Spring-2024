@@ -9,6 +9,7 @@ const api = axios.create({
   },
 });
 
+// create new book
 export const addBook = async (data) => {
   let response;
 
@@ -22,6 +23,7 @@ export const addBook = async (data) => {
   return response;
 };
 
+// read all books
 export const readBooks = async () => {
   let response;
 
@@ -35,11 +37,26 @@ export const readBooks = async () => {
   return response;
 };
 
+// update a book
 export const updateBook = async (data, id) => {
   let response;
 
   try {
     response = await api.patch(`/books/${id}`, data);
+  } catch (error) {
+    // console.log("Error ho gae");
+    return error;
+  }
+
+  return response;
+};
+
+// read specific book
+export const readSpecificBook = async (id) => {
+  let response;
+
+  try {
+    response = await api.get(`/books/${id}`);
   } catch (error) {
     // console.log("Error ho gae");
     return error;

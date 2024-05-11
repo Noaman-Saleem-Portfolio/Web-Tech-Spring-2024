@@ -7,7 +7,7 @@ import ErrorHandler from "../utils/error-class.js";
 // create book
 //////////////////////////////////////
 export const createNewBook = TryCatch(async (req, res, next) => {
-  console.log(req.body);
+  // console.log(req.body);
   // console.log(req.files.photo[0].path);
   let photo;
   // to tackle can not read property of undefined error if no image is being sent from frontend
@@ -76,6 +76,8 @@ export const readBook = TryCatch(async (req, res, next) => {
 // update a book
 //////////////////////////////////////
 export const updateBook = TryCatch(async (req, res, next) => {
+  console.log("In update Route");
+  console.log(req.body);
   // console.log(req.params);
   const { id } = req.params;
   let book = await Book.findById(id);
@@ -84,7 +86,28 @@ export const updateBook = TryCatch(async (req, res, next) => {
       new ErrorHandler(`No book exists in DB with given id =${id}`, 400)
     );
   }
-  book = await Book.findByIdAndUpdate(id, req.body, { new: true });
+  let { title, price, description } = req.body;
+
+  let photo;
+  // to tackle can not read property of undefined error if no image is being sent from frontend
+  // if photo is receieved use it
+  // otherwise use the old image url
+  if (req.files.photo) {
+    photo = req.files.photo[0].path;
+    // removind old pic
+    rm(book.photo, () => {
+      console.log("Photo Deleted");
+    });
+  } else {
+    photo = book.photo;
+  }
+
+  // update
+  book = await Book.findByIdAndUpdate(
+    id,
+    { title, price, description, photo },
+    { new: true }
+  );
   res.status(200).json({
     success: true,
     message: "The book updated in DB",

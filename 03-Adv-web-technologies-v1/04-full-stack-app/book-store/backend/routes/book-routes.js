@@ -28,7 +28,15 @@ router.route("/books").get(readAllBooks);
 router.route("/books/:id").get(readBook);
 
 // update book
-router.route("/books/:id").patch(updateBook);
+router.route("/books/:id").patch(
+  upload.fields([
+    {
+      name: "photo",
+      maxCount: 1,
+    },
+  ]),
+  updateBook
+);
 
 // delete book
 router.route("/books/:id").delete(deleteBook);
