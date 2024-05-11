@@ -7,6 +7,7 @@ import { readSpecificBook, updateBook } from "../api/internal";
 const FormikUpdate = () => {
   const navigate = useNavigate();
   const [book, setBook] = useState({});
+  const [photo, setPhoto] = useState({});
   const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -42,9 +43,9 @@ const FormikUpdate = () => {
 
   const submitHandler = async () => {
     // values.smily = "hahaha";
-    const { title, price, description, photo } = values;
+    const { title, price, description } = values;
     // console.log(title, price, description, photo);
-    console.log(values);
+    // console.log(values);
     const formData = new FormData();
     formData.append("photo", photo);
     formData.append("title", title);
@@ -76,13 +77,11 @@ const FormikUpdate = () => {
     handleChange,
     errors,
     handleSubmit,
-    setField,
   } = useFormik({
     initialValues: {
       title: book.title,
       price: book.price,
       description: book.description,
-      photo: "",
     },
     enableReinitialize: true,
     validationSchema: bookSchema,
@@ -144,10 +143,8 @@ const FormikUpdate = () => {
               type="file"
               name="photo"
               onBlur={handleBlur}
-              onChange={(e) => {
-                values.photo = e.target.files[0];
-                console.log(values.photo);
-              }}
+              onChange={(e) => setPhoto(e.target.files[0])}
+              
             />
             {errors.photo ? (
               <div className="text-red-600 my-0">{errors.photo}</div>

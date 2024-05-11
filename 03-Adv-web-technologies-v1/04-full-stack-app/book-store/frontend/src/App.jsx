@@ -16,11 +16,11 @@ function App() {
       <Menubar />
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route path="/add-book" element={<AddBook />} /> */}
-        <Route path="/add-book" element={<Formik />} />
+        <Route path="/add-book" element={<AddBook />} />
+        {/* <Route path="/add-book" element={<Formik />} /> */}
         <Route path="/books" element={<Books />} />
-        {/* <Route path="/book-update/:id" element={<UpdateBook />} /> */}
-        <Route path="/book-update/:id" element={<FormikUpdate />} />
+        <Route path="/book-update/:id" element={<UpdateBook />} />
+        {/* <Route path="/book-update/:id" element={<FormikUpdate />} /> */}
       </Routes>
     </BrowserRouter>
   );
