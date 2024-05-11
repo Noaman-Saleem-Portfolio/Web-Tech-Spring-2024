@@ -9,6 +9,7 @@ import Formik from "./pages/Formik";
 import Books from "./pages/Books";
 import UpdateBook from "./pages/UpdateBook";
 import FormikUpdate from "./pages/FormikUpdate";
+import BookDetails from "./pages/BookDetails";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/books" element={<Books />} />
         <Route path="/book-update/:id" element={<UpdateBook />} />
         {/* <Route path="/book-update/:id" element={<FormikUpdate />} /> */}
+        <Route path="/book-details/:id" element={<BookDetails />} />
       </Routes>
     </BrowserRouter>
   );
