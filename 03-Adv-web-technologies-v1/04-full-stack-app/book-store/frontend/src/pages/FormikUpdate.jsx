@@ -1,13 +1,44 @@
 import { useFormik } from "formik";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import bookSchema from "../schemas/bookSchema";
-import { useNavigate } from "react-router-dom";
-import { addBook } from "../api/internal";
+import { useNavigate, useParams } from "react-router-dom";
+import { readSpecificBook, updateBook } from "../api/internal";
 
-const Formik = () => {
+const FormikUpdate = () => {
   const navigate = useNavigate();
+  const [book, setBook] = useState({});
   const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+
+  // reading params
+  const params = useParams();
+  //    console.log(params);
+  const bookId = params.id;
+
+  // read specific book
+  useEffect(() => {
+    const readBook = async () => {
+      try {
+        const response = await readSpecificBook(bookId);
+        // console.log(response);
+        // console.log(response instanceof Error);
+        if (response instanceof Error) {
+          // to handle server down error
+          if (response.code == "ERR_NETWORK") {
+            throw new Error(response.message);
+          }
+          throw new Error(response.response.data.message);
+        }
+        setBook(response.data.book);
+      } catch (err) {
+        console.log("OH NO ERROR");
+        console.log(err);
+        setIsError(true);
+        setErrorMessage(err.message);
+      }
+    };
+    readBook();
+  }, []);
 
   const submitHandler = async () => {
     // values.smily = "hahaha";
@@ -21,13 +52,13 @@ const Formik = () => {
     formData.append("description", description);
 
     try {
-      const response = await addBook(formData);
-      console.log(response);
+      const response = await updateBook(formData, bookId);
+      //   console.log(response);
       // console.log(response instanceof Error);
       if (response instanceof Error) {
         throw new Error(response.response.data.message);
       }
-      if (response.status === 201) {
+      if (response.status === 200) {
         navigate("/");
       }
     } catch (err) {
@@ -48,17 +79,19 @@ const Formik = () => {
     setField,
   } = useFormik({
     initialValues: {
-      title: "",
-      price: null,
-      description: "",
+      title: book.title,
+      price: book.price,
+      description: book.description,
       photo: "",
     },
+    enableReinitialize: true,
     validationSchema: bookSchema,
     onSubmit: submitHandler,
   });
 
   return (
     <>
+      <p>Formik Update</p>
       {isError && (
         <p className="text-red-700 mx-auto w-[50%] mt-[10px]">{errorMessage}</p>
       )}
@@ -72,8 +105,9 @@ const Formik = () => {
               name="title"
               onChange={handleChange}
               onBlur={handleBlur}
+              value={values.title}
             />
-            {errors.title ? (
+            {touched.title && errors.title ? (
               <div className="text-red-600 my-0">{errors.title}</div>
             ) : null}
           </div>
@@ -85,8 +119,9 @@ const Formik = () => {
               name="price"
               onChange={handleChange}
               onBlur={handleBlur}
+              value={values.price}
             />
-            {errors.price ? (
+            {touched.price && errors.price ? (
               <div className="text-red-600 my-0">{errors.price}</div>
             ) : null}
           </div>
@@ -97,8 +132,9 @@ const Formik = () => {
               placeholder="Type decription..."
               onChange={handleChange}
               onBlur={handleBlur}
+              value={values.description}
             ></textarea>
-            {errors.description ? (
+            {touched.description && errors.description ? (
               <div className="text-red-600 my-0">{errors.description}</div>
             ) : null}
           </div>
@@ -108,7 +144,10 @@ const Formik = () => {
               type="file"
               name="photo"
               onBlur={handleBlur}
-              onChange={(e) => (values.photo = e.target.files[0])}
+              onChange={(e) => {
+                values.photo = e.target.files[0];
+                console.log(values.photo);
+              }}
             />
             {errors.photo ? (
               <div className="text-red-600 my-0">{errors.photo}</div>
@@ -126,4 +165,4 @@ const Formik = () => {
   );
 };
 
-export default Formik;
+export default FormikUpdate;

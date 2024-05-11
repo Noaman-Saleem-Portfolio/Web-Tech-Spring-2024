@@ -8,6 +8,7 @@ import AddBook from "./pages/AddBook";
 import Formik from "./pages/Formik";
 import Books from "./pages/Books";
 import UpdateBook from "./pages/UpdateBook";
+import FormikUpdate from "./pages/FormikUpdate";
 
 function App() {
   return (
@@ -15,10 +16,11 @@ function App() {
       <Menubar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/add-book" element={<AddBook />} />
-        {/* <Route path="/add-book" element={<Formik />} /> */}
+        {/* <Route path="/add-book" element={<AddBook />} /> */}
+        <Route path="/add-book" element={<Formik />} />
         <Route path="/books" element={<Books />} />
-        <Route path="/book-update/:id" element={<UpdateBook />} />
+        {/* <Route path="/book-update/:id" element={<UpdateBook />} /> */}
+        <Route path="/book-update/:id" element={<FormikUpdate />} />
       </Routes>
     </BrowserRouter>
   );

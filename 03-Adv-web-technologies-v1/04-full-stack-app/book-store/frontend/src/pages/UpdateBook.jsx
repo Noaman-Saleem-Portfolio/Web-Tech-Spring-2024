@@ -11,9 +11,9 @@ const UpdateBook = () => {
 
   // data state object
   const [data, setData] = useState({
-    title: book.title,
-    price: book.price,
-    description: book.description,
+    title: book?.title,
+    price: book?.price,
+    description: book?.description,
     photo: "",
   });
 
