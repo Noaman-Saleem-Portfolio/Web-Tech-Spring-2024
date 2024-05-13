@@ -51,6 +51,20 @@ export const updateBook = async (data, id) => {
   return response;
 };
 
+// deleteBook a book
+export const deleteBook = async (id) => {
+  let response;
+
+  try {
+    response = await api.delete(`/books/${id}`);
+  } catch (error) {
+    // console.log("Error ho gae");
+    return error;
+  }
+
+  return response;
+};
+
 // read specific book
 export const readSpecificBook = async (id) => {
   let response;
