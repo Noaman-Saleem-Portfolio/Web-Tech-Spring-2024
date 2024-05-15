@@ -1,7 +1,13 @@
 import express from "express";
 import morgan from "morgan";
+import { config } from "dotenv";
 import cors from "cors";
 import { errorMiddleware } from "./middlewares/error.js";
+
+//Configuring environment variables
+config({
+  path: "./.env",
+});
 
 import connectDB from "./database/database.js";
 
@@ -21,8 +27,10 @@ app.use(
   })
 );
 
+const mongoURI = process.env.MONGO_URI || "";
+
 //connecting to MongoDB
-connectDB();
+connectDB(mongoURI);
 
 // setting folder for static assets
 app.use("/public", express.static("public"));
