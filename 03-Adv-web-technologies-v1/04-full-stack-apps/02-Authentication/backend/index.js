@@ -1,5 +1,6 @@
 import express from "express";
 import morgan from "morgan";
+import cookieParser from "cookie-parser";
 import { config } from "dotenv";
 import cors from "cors";
 import { errorMiddleware } from "./middlewares/error.js";
@@ -38,6 +39,7 @@ app.use("/public", express.static("public"));
 //Middlewares
 app.use(express.json());
 app.use(morgan("dev"));
+app.use(cookieParser());
 
 // using routes
 app.use("/api/v1", bookRoutes);
