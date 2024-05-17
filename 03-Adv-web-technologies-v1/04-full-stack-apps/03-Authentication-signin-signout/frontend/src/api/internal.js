@@ -4,8 +4,15 @@ const api = axios.create({
   baseURL: import.meta.env.VITE_SERVER,
   withCredentials: true,
   headers: {
-    // "Content-Type": "application/json",
     "Content-Type": "multipart/form-data",
+  },
+});
+
+const apiJson = axios.create({
+  baseURL: import.meta.env.VITE_SERVER,
+  withCredentials: true,
+  headers: {
+    "Content-Type": "application/json",
   },
 });
 
@@ -71,6 +78,36 @@ export const readSpecificBook = async (id) => {
 
   try {
     response = await api.get(`/books/${id}`);
+  } catch (error) {
+    // console.log("Error ho gae");
+    return error;
+  }
+
+  return response;
+};
+
+// =============================================================================
+
+// login user
+export const loginUser = async (data) => {
+  let response;
+
+  try {
+    response = await apiJson.post(`/user/login`, data);
+  } catch (error) {
+    // console.log("Error ho gae");
+    return error;
+  }
+
+  return response;
+};
+
+// logout user
+export const logoutUser = async () => {
+  let response;
+
+  try {
+    response = await apiJson.post(`/user/logout`);
   } catch (error) {
     // console.log("Error ho gae");
     return error;

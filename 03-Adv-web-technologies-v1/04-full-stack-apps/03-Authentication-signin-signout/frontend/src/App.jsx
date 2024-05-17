@@ -13,6 +13,7 @@ import BookDetails from "./pages/BookDetails";
 import Login from "./pages/Login";
 import Protected from "./components/protected";
 import { useSelector } from "react-redux";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const isAuth = useSelector((state) => state.user.auth);
@@ -44,6 +45,7 @@ function App() {
         <Route path="/book-details/:id" element={<BookDetails />} />
         <Route path="/login" element={<Login />} />
       </Routes>
+      <Toaster position="bottom-center" />
     </BrowserRouter>
   );
 }
