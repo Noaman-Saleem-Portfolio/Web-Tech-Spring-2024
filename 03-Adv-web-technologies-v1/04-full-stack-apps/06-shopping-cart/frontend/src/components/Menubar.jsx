@@ -63,12 +63,28 @@ const Menubar = () => {
             </div>
           ) : (
             <div className="space-x-8 relative">
-              <Link to={"/login"}>
-                <IconContext.Provider value={{ size: "22px", className: "" }}>
+              <Link to={"/cart"}>
+                <IconContext.Provider value={{ size: "25px", className: "" }}>
                   <BsCart className="inline-block" />
                 </IconContext.Provider>
               </Link>
-              <span className="absolute bg-white text-black left-[-25px] top-[11px] p-[2px] px-[5px] rounded-[5px] text-[20px]">
+              <span
+                className="absolute  left-[-17px] top-[7px] "
+                style={{
+                  width: "1em",
+                  height: "1em",
+                  boxSizing: "initial",
+
+                  background: "yellow",
+                  border: "0.1em solid #666",
+                  color: "#666",
+                  textAlign: "center",
+                  borderRadius: "50%",
+
+                  lineHeight: "1em",
+                  boxSizing: "content-box",
+                }}
+              >
                 {cartTotalQuantity}
               </span>
               <Link to={"/login"}>Login</Link>

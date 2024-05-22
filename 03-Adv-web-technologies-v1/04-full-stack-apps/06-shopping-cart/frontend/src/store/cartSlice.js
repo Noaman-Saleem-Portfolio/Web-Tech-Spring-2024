@@ -54,9 +54,54 @@ export const cartSlice = createSlice({
       state.cartTotalQuantity = quantity;
       state.cartTotalAmount = total;
     },
+
+    decreaseCart(state, action) {
+      const itemIndex = state.cartItems.findIndex(
+        (item) => item._id === action.payload._id
+      );
+
+      if (state.cartItems[itemIndex].cartQuantity > 1) {
+        state.cartItems[itemIndex].cartQuantity -= 1;
+
+        toast.success("Decreased product quantity");
+      } else if (state.cartItems[itemIndex].cartQuantity === 1) {
+        const nextCartItems = state.cartItems.filter(
+          (item) => item._id !== action.payload._id
+        );
+
+        state.cartItems = nextCartItems;
+
+        toast.error("Product removed from cart");
+      }
+
+      localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+    },
+
+    clearCart(state, action) {
+      state.cartItems = [];
+      localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+      toast.error("Cart cleared");
+    },
+
+    removeFromCart(state, action) {
+      state.cartItems.map((cartItem) => {
+        if (cartItem._id === action.payload._id) {
+          const nextCartItems = state.cartItems.filter(
+            (item) => item._id !== cartItem._id
+          );
+
+          state.cartItems = nextCartItems;
+
+          toast.error("Product removed from cart");
+        }
+        localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+        return state;
+      });
+    },
   },
 });
 
-export const { addToCart, getTotals } = cartSlice.actions;
+export const { addToCart, getTotals, decreaseCart, clearCart, removeFromCart } =
+  cartSlice.actions;
 
 export default cartSlice.reducer;

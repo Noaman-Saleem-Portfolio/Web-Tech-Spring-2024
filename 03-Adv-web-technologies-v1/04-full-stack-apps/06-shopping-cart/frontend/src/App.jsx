@@ -55,7 +55,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>
-      <Toaster position="bottom-center" />
+      <Toaster position="bottom-left" />
     </BrowserRouter>
   );
 }
