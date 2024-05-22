@@ -2,11 +2,13 @@ import { useFormik } from "formik";
 import React, { useState } from "react";
 import loginSchema from "../schemas/loginSchema";
 import { loginUser } from "../api/internal";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setUser } from "../store/userSlice";
- 
+
 const Login = () => {
+  const location = useLocation();
+  // console.log(location.state.redirectUrl);
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -38,6 +40,10 @@ const Login = () => {
         };
 
         dispatch(setUser(user));
+        // 2. redirect -> redirectUrl or homepage
+        if (location?.state?.redirectUrl) {
+          return navigate(location.state.redirectUrl);
+        }
         // 2. redirect -> homepage
         navigate("/");
       }

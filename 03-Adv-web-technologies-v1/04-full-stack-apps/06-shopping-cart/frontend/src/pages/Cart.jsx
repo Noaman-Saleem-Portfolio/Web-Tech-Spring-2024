@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FaArrowRight } from "react-icons/fa6";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   addToCart,
   clearCart,
@@ -10,8 +10,11 @@ import {
   removeFromCart,
 } from "../store/cartSlice";
 import { ImCross } from "react-icons/im";
+import PayButton from "../components/PayButton";
 
 const Cart = () => {
+  const location = useLocation();
+  const isAuthenticated = useSelector((state) => state.user.auth);
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -119,9 +122,22 @@ const Cart = () => {
             <div className="subTotal flex justify-between basis-[20%] my-6 items-center">
               <p className="text-2xl font-bold">Subtotal</p>
               <p>{cart.cartTotalAmount}</p>
-              
             </div>
           </div>
+          {isAuthenticated ? (
+            <PayButton cartItems={cart.cartItems} />
+          ) : (
+            <button
+              className="bg-blue-800 text-white p-4 py-2 ml-auto block w-[270px] hover:bg-blue-900"
+              onClick={() =>
+                navigate("/login", {
+                  state: { redirectUrl: location.pathname },
+                })
+              }
+            >
+              Login to Check out
+            </button>
+          )}
         </>
       )}
     </div>

@@ -55,38 +55,38 @@ const Menubar = () => {
         </div>
 
         {/* Right Nav */}
-        <div className="text-white  space-x-8 ">
+        <div className="text-white  space-x-8 relative flex">
+          <Link to={"/cart"}>
+            <IconContext.Provider value={{ size: "25px", className: "" }}>
+              <BsCart className="inline-block" />
+            </IconContext.Provider>
+          </Link>
+          <span
+            className="absolute  left-[-17px] top-[7px] "
+            style={{
+              width: "1em",
+              height: "1em",
+              boxSizing: "initial",
+
+              background: "yellow",
+              border: "0.1em solid #666",
+              color: "#666",
+              textAlign: "center",
+              borderRadius: "50%",
+
+              lineHeight: "1em",
+              boxSizing: "content-box",
+            }}
+          >
+            {cartTotalQuantity}
+          </span>
           {isAuthenticated ? (
             <div className="space-x-8">
               <Link>{username}</Link>
               <Link onClick={handleSignout}>Signout</Link>
             </div>
           ) : (
-            <div className="space-x-8 relative">
-              <Link to={"/cart"}>
-                <IconContext.Provider value={{ size: "25px", className: "" }}>
-                  <BsCart className="inline-block" />
-                </IconContext.Provider>
-              </Link>
-              <span
-                className="absolute  left-[-17px] top-[7px] "
-                style={{
-                  width: "1em",
-                  height: "1em",
-                  boxSizing: "initial",
-
-                  background: "yellow",
-                  border: "0.1em solid #666",
-                  color: "#666",
-                  textAlign: "center",
-                  borderRadius: "50%",
-
-                  lineHeight: "1em",
-                  boxSizing: "content-box",
-                }}
-              >
-                {cartTotalQuantity}
-              </span>
+            <div className=" space-x-8">
               <Link to={"/login"}>Login</Link>
               <Link to={"/signup"}>Signup</Link>
             </div>
