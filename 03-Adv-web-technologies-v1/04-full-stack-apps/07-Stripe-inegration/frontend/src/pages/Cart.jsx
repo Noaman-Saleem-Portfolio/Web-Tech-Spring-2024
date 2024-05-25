@@ -21,7 +21,7 @@ const Cart = () => {
 
   useEffect(() => {
     dispatch(getTotals());
-  }, [cart, dispatch]); 
+  }, [cart, dispatch]);
 
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
@@ -64,8 +64,8 @@ const Cart = () => {
           {cart.cartItems &&
             cart.cartItems.map((cartItem) => {
               return (
-                <>
-                  <div className="cartItem flex " key={cartItem._id}>
+                <div key={cartItem._id}>
+                  <div className="cartItem flex ">
                     <div className="product flex gap-5 my-3 basis-[25%]">
                       <img
                         className="w-[200px]"
@@ -103,7 +103,7 @@ const Cart = () => {
                     </div>
                   </div>
                   <hr />
-                </>
+                </div>
               );
             })}
 

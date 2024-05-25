@@ -11,7 +11,6 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.5",
-    "@stripe/stripe-js": "^3.4.1",
     "axios": "^1.6.8",
     "formik": "^2.4.6",
     "react": "^18.2.0",

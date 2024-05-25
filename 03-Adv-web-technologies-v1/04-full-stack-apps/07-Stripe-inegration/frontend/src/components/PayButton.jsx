@@ -1,40 +1,35 @@
+import axios from "axios";
 import React from "react";
-import { loadStripe } from "@stripe/stripe-js";
+import { useSelector } from "react-redux";
 
 const PayButton = ({ cartItems }) => {
+  const userId = useSelector((state) => state.user._id);
+
   // payment integration
-  const makePayment = async () => {
-    const stripe = await loadStripe(import.meta.env.VITE_PUBLISHABLE_KEY);
-
-    const body = {
-      products: cartItems,
-    };
-    const headers = {
-      "Content-Type": "application/json",
-      "Authorization": "Bearer " + `${import.meta.env.VITE_PUBLISHABLE_KEY}`
-    };
-    const response = await fetch(
-      `${import.meta.env.VITE_SERVER}create-checkout-session`,
-      {
-        method: "POST",
-        headers: headers,
-        body: JSON.stringify(body),
+  const handlePayment = async () => {
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_SERVER}/create-checkout-session`,
+        {
+          cartItems,
+          userId,
+        }
+      );
+      console.log(response);
+      if (response.data.url) {
+        window.location.href = response.data.url;
       }
-    );
-
-    const session = await response.json();
-
-    const result = stripe.redirectToCheckout({
-      sessionId: session.id,
-    });
-
-    if (result.error) {
-      console.log(result.error);
+    } catch (error) {
+      console.log(`OH NO ERROR`);
+      console.log(error);
     }
   };
 
   return (
-    <button onClick={makePayment} className="bg-blue-800 text-white p-4 py-2 ml-auto block w-[270px] hover:bg-blue-900">
+    <button
+      onClick={handlePayment}
+      className="bg-blue-800 text-white p-4 py-2 ml-auto block w-[270px] hover:bg-blue-900"
+    >
       Check out
     </button>
   );
