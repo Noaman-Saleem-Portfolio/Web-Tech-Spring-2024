@@ -1,0 +1,9 @@
+.nav-link,
+.navbar-brand {
+  color: pink !important;
+}
+
+.nav-link:hover,
+.navbar-brand:hover {
+  color: red !important;
+}
