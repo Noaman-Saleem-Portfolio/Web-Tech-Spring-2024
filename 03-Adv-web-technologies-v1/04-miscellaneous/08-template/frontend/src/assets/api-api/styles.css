@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+}
+
+.all-todos {
+  margin-bottom: 20px;
+}
+
+.todo {
+  border: 1px solid black;
+  background-color: bisque;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.red-bd {
+  border-bottom: 15px solid red;
+}
+
+.green-bd {
+  border-bottom: 15px solid green;
+}
