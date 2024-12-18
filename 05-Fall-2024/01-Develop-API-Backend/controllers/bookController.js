@@ -68,3 +68,53 @@ export const readBook = async (req, res) => {
     });
   }
 };
+
+// ///////////////////////////////////////////
+// Update specific book
+// //////////////////////////////////////////
+export const updateBook = async (req, res) => {
+  const { id } = req.params;
+  // console.log(id);
+  console.log(req.body);
+
+  try {
+    const book = await Book.findByIdAndUpdate(id, req.body, { new: true });
+    // console.log(book);
+
+    res.status(200).json({
+      message: "The specific book Updated in DB",
+      book,
+    });
+  } catch (error) {
+    console.log("OH NO ERROR");
+    console.log(error);
+    res.status(500).json({
+      msg: error.message,
+      error,
+    });
+  }
+};
+
+// ///////////////////////////////////////////
+// Delete specific book
+// //////////////////////////////////////////
+export const deleteBook = async (req, res) => {
+  const { id } = req.params;
+  // console.log(id);
+  // console.log(req.body);
+
+  try {
+    await Book.findByIdAndDelete(id);
+
+    res.status(200).json({
+      message: "The specific book Deleted from DB",
+    });
+  } catch (error) {
+    console.log("OH NO ERROR");
+    console.log(error);
+    res.status(500).json({
+      msg: error.message,
+      error,
+    });
+  }
+};
