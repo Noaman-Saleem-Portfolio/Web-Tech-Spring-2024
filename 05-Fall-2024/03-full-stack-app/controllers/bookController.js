@@ -31,10 +31,13 @@ export const readAllBooks = async (req, res) => {
   try {
     const books = await Book.find();
     const quantity = books.length;
-    res.status(200).json({
-      quantity,
-      books,
-    });
+    // res.status(200).json({
+    //   quantity,
+    //   books,
+    // });
+    console.log(books);
+
+    res.render("books.ejs", { books });
   } catch (error) {
     console.log("OH NO ERROR");
     console.log(error);
@@ -54,11 +57,12 @@ export const readBook = async (req, res) => {
 
   try {
     const book = await Book.findById(id);
-    res.status(200).json({
-      success: true,
-      message: "The specific book fetched from DB",
-      book,
-    });
+    // res.status(200).json({
+    //   success: true,
+    //   message: "The specific book fetched from DB",
+    //   book,
+    // });
+    res.render("details", { book });
   } catch (error) {
     console.log("OH NO ERROR");
     console.log(error);
